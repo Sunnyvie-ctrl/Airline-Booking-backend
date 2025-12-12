@@ -1,6 +1,6 @@
 package com.HippyAir.hippyair_backend.Controller;
 
-import com.HippyAir.hippyair_backend.Model.Booking;
+import com.HippyAir.hippyair_backend.Model.Book;
 import com.HippyAir.hippyair_backend.DTO.BookingRequestDTO;
 import com.HippyAir.hippyair_backend.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/bookings")
-public class BookingController {
+public class BookController {
 
     @Autowired
     private BookingService bookingService;

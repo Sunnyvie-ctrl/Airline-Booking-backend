@@ -1,4 +1,4 @@
-package com.HippyAir.hippyair_backend.model;
+package com.HippyAir.hippyair_backend.Model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
