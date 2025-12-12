@@ -6,8 +6,9 @@ import jakarta.persistence.*;
 @Table(name = "employee")
 public class Employee {
 
-    @Id
-    private String numEmp;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long numEmp;
 
     private String profession;
     private String title;
