@@ -6,7 +6,7 @@ It allows customers to book flights online, manages planes, airports, flights, u
 
 The backend exposes a **REST API** and uses a relational database (PostgreSQL) for data storage.  
 
-
+---
 
 ## Features
 - **User Management**: Create, read, update, delete users.  
@@ -18,7 +18,7 @@ The backend exposes a **REST API** and uses a relational database (PostgreSQL) f
 - **Miles Rewards**: Tracks flights per client and generates random discount codes after 3 flights in a civil year.  
 - **Search Feature**: Find available flights by departure city, destination city, and departure date.
 
-
+---
 
 ## Technologies Used
 - **Backend**: Java 17, Spring Boot  
@@ -27,9 +27,9 @@ The backend exposes a **REST API** and uses a relational database (PostgreSQL) f
 - **API Testing**: Postman (Swagger not used in this project)  
 - **Source Control**: GitHub  
 
+---
 
-
-## Project Structure
+```## Project Structure
 
 airline_backend/
 │
@@ -44,7 +44,7 @@ airline_backend/
 │ └─ application.properties
 │
 └─ README.md
-
+```
 ---
 
 ## Installation & Running
