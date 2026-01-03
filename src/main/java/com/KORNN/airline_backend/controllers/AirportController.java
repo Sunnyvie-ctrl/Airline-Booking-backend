@@ -27,12 +27,23 @@ public class AirportController {
         this.airportService = airportService;
     }
 
+    /**
+     * Creates a new airport.
+     *
+     * @param airportDTO airport data
+     * @return created airport
+     */
     @PostMapping
     public ResponseEntity<AirportDTO> createAirport(@RequestBody AirportDTO dto) {
         Airport airport = airportService.createAirport(dto.toEntity());
         return ResponseEntity.ok(AirportDTO.fromEntity(airport));
     }
 
+    /**
+     * Retrieves all airports.
+     *
+     * @return list of airports
+     */
     @GetMapping
     public ResponseEntity<List<AirportDTO>> getAllAirports() {
         List<AirportDTO> airports = airportService.getAllAirports()
@@ -42,12 +53,24 @@ public class AirportController {
         return ResponseEntity.ok(airports);
     }
 
+    /**
+     * Retrieves airport by ID.
+     *
+     * @return airport
+     */
     @GetMapping("/{id}")
     public ResponseEntity<AirportDTO> getAirportById(@PathVariable Long id) {
         Airport airport = airportService.getAirportById(id);
         return ResponseEntity.ok(AirportDTO.fromEntity(airport));
     }
 
+    /**
+     * Updates an existing airport.
+     *
+     * @param id airport ID
+     * @param airportDTO updated data
+     * @return updated airport
+     */
     @PutMapping("/{id}")
     public ResponseEntity<AirportDTO> updateAirport(@PathVariable Long id,
                                                     @RequestBody AirportDTO dto) {
@@ -55,6 +78,12 @@ public class AirportController {
         return ResponseEntity.ok(AirportDTO.fromEntity(updated));
     }
 
+    /**
+     * Deletes an airport.
+     *
+     * @param id airport ID
+     * @return empty response
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAirport(@PathVariable Long id) {
         airportService.deleteAirport(id);

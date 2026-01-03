@@ -27,7 +27,13 @@ public class EmployeeController {
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-
+    
+    /**
+     * Creates a new employee.
+     *
+     * @param employeeDTO employee data
+     * @return created employee
+     */
     @PostMapping("/{userId}")
     public ResponseEntity<EmployeeDTO> createEmployee(@PathVariable Long userId,
                                                       @RequestBody EmployeeDTO dto) {
@@ -35,12 +41,25 @@ public class EmployeeController {
         return ResponseEntity.ok(EmployeeDTO.fromEntity(employee));
     }
 
+    /**
+     * Retrieves an employee by ID.
+     *
+     * @param id employee ID
+     * @return employee data
+     */
     @GetMapping("/{numEmp}")
     public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable String numEmp) {
         Employee emp = employeeService.getEmployee(numEmp);
         return ResponseEntity.ok(EmployeeDTO.fromEntity(emp));
     }
 
+    /**
+     * Updates an existing employee.
+     *
+     * @param id employee ID
+     * @param employeeDTO updated data
+     * @return updated employee
+     */
     @PutMapping("/{numEmp}")
     public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable String numEmp,
                                                       @RequestBody EmployeeDTO dto) {
@@ -48,12 +67,23 @@ public class EmployeeController {
         return ResponseEntity.ok(EmployeeDTO.fromEntity(updated));
     }
 
+    /**
+     * Deletes an employee.
+     *
+     * @param id employee ID
+     * @return empty response
+     */
     @DeleteMapping("/{numEmp}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable String numEmp) {
         employeeService.deleteEmployee(numEmp);
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * Retrieves all employees.
+     *
+     * @return list of employees
+     */
     @GetMapping
     public ResponseEntity<List<EmployeeDTO>> getAllEmployees() {
         List<EmployeeDTO> employees = employeeService.getAllEmployees()

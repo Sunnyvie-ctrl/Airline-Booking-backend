@@ -29,24 +29,53 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
+    /**
+     * Books a flight for a client.
+     *
+     * <p>Business rules:</p>
+     * <ul>
+     *   <li>Seat availability is checked</li>
+     *   <li>MilesReward entry is created</li>
+     *   <li>A discount code may be generated after 3 flights in a year</li>
+     * </ul>
+     *
+     * @param request booking request data
+     * @return created booking
+     */
     @PostMapping
     public ResponseEntity<BookDTO> bookFlight(@RequestBody BookingRequest request) {
         Book booking = bookingService.bookFlight(request);
         return ResponseEntity.ok(BookDTO.fromEntity(booking));
     }
 
+    /**
+     * Retrieves booking by ID
+     * 
+     * @return booking
+     */
     @GetMapping("/{reservationId}")
     public ResponseEntity<BookDTO> getBooking(@PathVariable Long reservationId) {
         Book booking = bookingService.getBooking(reservationId);
         return ResponseEntity.ok(BookDTO.fromEntity(booking));
     }
 
+    /**
+     * Deletes an airport.
+     *
+     * @param id booking ID
+     * @return empty response
+     */
     @DeleteMapping("/{reservationId}")
     public ResponseEntity<Void> cancelBooking(@PathVariable Long reservationId) {
         bookingService.cancelBooking(reservationId);
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * Retrieves all booking
+     * 
+     * @return all booking
+     */
     @GetMapping
     public ResponseEntity<List<BookDTO>> getAllBookings() {
         List<BookDTO> bookings = bookingService.getAllBookings()

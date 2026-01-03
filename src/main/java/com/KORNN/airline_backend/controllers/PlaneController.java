@@ -17,6 +17,7 @@ import com.KORNN.airline_backend.service.PlaneService;
  * - CRUD operations for aircraft
  * - Accepts and returns DTOs
  */
+
 @RestController
 @RequestMapping("/api/planes")
 public class PlaneController {
@@ -27,12 +28,23 @@ public class PlaneController {
         this.planeService = planeService;
     }
 
+    /**
+     * Creates a new plane.
+     *
+     * @param planeDTO plane data
+     * @return created plane
+     */
     @PostMapping
     public ResponseEntity<PlaneDTO> createPlane(@RequestBody PlaneDTO dto) {
         Plane plane = planeService.createPlane(dto.toEntity());
         return ResponseEntity.ok(PlaneDTO.fromEntity(plane));
     }
 
+    /**
+     * Retrieves all planes.
+     *
+     * @return list of planes
+     */
     @GetMapping
     public ResponseEntity<List<PlaneDTO>> getAllPlanes() {
         List<PlaneDTO> planes = planeService.getAllPlanes()
@@ -42,12 +54,24 @@ public class PlaneController {
         return ResponseEntity.ok(planes);
     }
 
+    /**
+     * Retrieves plane by ID.
+     *
+     * @return plane
+     */
     @GetMapping("/{id}")
     public ResponseEntity<PlaneDTO> getPlaneById(@PathVariable Long id) {
         Plane plane = planeService.getPlaneById(id);
         return ResponseEntity.ok(PlaneDTO.fromEntity(plane));
     }
 
+    /**
+     * Updates an existing plane.
+     *
+     * @param id plane ID
+     * @param planeDTO updated plane data
+     * @return updated plane
+     */
     @PutMapping("/{id}")
     public ResponseEntity<PlaneDTO> updatePlane(@PathVariable Long id,
                                                 @RequestBody PlaneDTO dto) {
@@ -55,6 +79,12 @@ public class PlaneController {
         return ResponseEntity.ok(PlaneDTO.fromEntity(updated));
     }
 
+    /**
+     * Deletes a plane by ID.
+     *
+     * @param id plane ID
+     * @return empty response
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePlane(@PathVariable Long id) {
         planeService.deletePlane(id);

@@ -28,12 +28,23 @@ public class FlightController {
         this.flightService = flightService;
     }
 
+    /**
+     * Creates a new flight.
+     *
+     * @param flightDTO flight data
+     * @return created flight
+     */
     @PostMapping
     public ResponseEntity<FlightDTO> createFlight(@RequestBody FlightDTO dto) {
         Flight flight = flightService.createFlight(dto.toEntity());
         return ResponseEntity.ok(FlightDTO.fromEntity(flight));
     }
-
+    
+    /**
+     * Retrieves all flights
+     * 
+     * @return all flights
+     */
     @GetMapping
     public ResponseEntity<List<FlightDTO>> getAllFlights() {
         List<FlightDTO> flights = flightService.getAllFlights()
@@ -43,25 +54,51 @@ public class FlightController {
         return ResponseEntity.ok(flights);
     }
 
+    /**
+     * Retrieves flights by number
+     * 
+     * @return flight
+     */
     @GetMapping("/{flightNumber}")
     public ResponseEntity<FlightDTO> getFlight(@PathVariable String flightNumber) {
         Flight flight = flightService.getFlightByNumber(flightNumber);
         return ResponseEntity.ok(FlightDTO.fromEntity(flight));
     }
 
+    /**
+     * Updates an existing airport.
+     *
+     * @param id flight ID
+     * @param FlightDTO updated data
+     * @return updated flight
+     */
     @PutMapping("/{flightNumber}")
     public ResponseEntity<FlightDTO> updateFlight(@PathVariable String flightNumber,
                                                   @RequestBody FlightDTO dto) {
         Flight updated = flightService.updateFlight(flightNumber, dto.toEntity());
         return ResponseEntity.ok(FlightDTO.fromEntity(updated));
     }
-
+    
+    /**
+     * Deletes a flight.
+     *
+     * @param id flight ID
+     * @return empty response
+     */
     @DeleteMapping("/{flightNumber}")
     public ResponseEntity<Void> deleteFlight(@PathVariable String flightNumber) {
         flightService.deleteFlight(flightNumber);
         return ResponseEntity.noContent().build();
     }
-
+    
+    /**
+     * Searches available flights by departure city, arrival city, and date.
+     *
+     * @param departureCity departure city
+     * @param arrivalCity arrival city
+     * @param date departure date
+     * @return list of matching flights
+     */
     @GetMapping("/search")
     public ResponseEntity<List<FlightDTO>> searchFlights(
             @RequestParam String departureCity,

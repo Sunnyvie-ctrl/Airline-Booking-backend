@@ -22,17 +22,33 @@ import com.KORNN.airline_backend.service.UserService;
 public class UserController {
 
     private final UserService userService;
-
+    
+    /**
+     * Constructor injection for UserService.
+     *
+     * @param userService service handling user business logic
+     */
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
+    /**
+     * Creates a new user.
+     *
+     * @param userDTO user data
+     * @return created user
+     */
     @PostMapping
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
         User user = userService.createUser(userDTO.toEntity());
         return ResponseEntity.ok(UserDTO.fromEntity(user));
     }
 
+    /**
+     * Retrieves all users.
+     *
+     * @return list of users
+     */
     @GetMapping
     public ResponseEntity<List<UserDTO>> getAllUsers() {
         List<UserDTO> users = userService.getAllUsers()
@@ -41,13 +57,25 @@ public class UserController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(users);
     }
-
+ 
+    /**
+     * Retrieves user by ID.
+     *
+     * @return user
+     */
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
         User user = userService.getUserById(id);
         return ResponseEntity.ok(UserDTO.fromEntity(user));
     }
 
+    /**
+     * Updates an existing user.
+     *
+     * @param id user ID
+     * @param userDTO updated data
+     * @return updated user
+     */
     @PutMapping("/{id}")
     public ResponseEntity<UserDTO> updateUser(@PathVariable Long id,
                                               @RequestBody UserDTO userDTO) {
@@ -55,6 +83,12 @@ public class UserController {
         return ResponseEntity.ok(UserDTO.fromEntity(updated));
     }
 
+    /**
+     * Deletes a user by ID.
+     *
+     * @param id user ID
+     * @return empty response
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
