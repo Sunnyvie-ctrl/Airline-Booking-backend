@@ -9,6 +9,7 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // auto_increment
+    @Column(name = "id_reservation")
     private Long idReservation;
 
     @ManyToOne // many bookings can have same flight number 

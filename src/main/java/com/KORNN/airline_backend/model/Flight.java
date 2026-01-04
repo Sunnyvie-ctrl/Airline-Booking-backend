@@ -3,45 +3,70 @@ package com.KORNN.airline_backend.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 @Entity
 @Table(name = "flights")
 public class Flight {
 
     @Id
+    @Column(name = "flight_number")
     private String flightNumber;
 
+    @Column(name = "departure_city", nullable = false)
     private String departureCity;
+
+    @Column(name = "arrival_city", nullable = false)
     private String arrivalCity;
-    private String departureHour;
-    private String arrivalHour;
+
+    @Column(name = "departure_hour", nullable = false)
+    private LocalTime departureHour;
+
+    @Column(name = "arrival_hour", nullable = false)
+    private LocalTime arrivalHour;
+
+    @Column(name = "departure_date", nullable = false)
     private LocalDate departureDate;
-    private int numberOfSeat;
+
+    @Column(name = "number_of_seat")
+    private Integer numberOfSeat;
+
+    @Column(name = "first_class_seat_price")
     private BigDecimal firstClassSeatPrice;
+
+    @Column(name = "premium_seat_price")
     private BigDecimal premiumSeatPrice;
+
+    @Column(name = "business_class_price")
     private BigDecimal businessClassPrice;
+
+    @Column(name = "economics_class_price")
     private BigDecimal economicsClassPrice;
 
-    @ManyToOne   /// many flights can use 1 plane
-    @JoinColumn(name = "id_plane")   /// the flight table will have a column Id_plane... joined from the plane table
-    private Plane plane;   
-
-    @ManyToOne  // many flights can have same departure airport
-    @JoinColumn(name = "departure_airport_id")  // departure_airport_id is a foreign key in flights table
-    private Airport departureAirport; //
-
+    /** Many flights can use one plane */
     @ManyToOne
-    @JoinColumn(name = "arrival_airport_id")
+    @JoinColumn(name = "id_plane", nullable = false)
+    private Plane plane;
+
+    /** Many flights can share the same departure airport */
+    @ManyToOne
+    @JoinColumn(name = "departure_airport_id", nullable = false)
+    private Airport departureAirport;
+
+    /** Many flights can share the same arrival airport */
+    @ManyToOne
+    @JoinColumn(name = "arrival_airport_id", nullable = false)
     private Airport arrivalAirport;
 
     // Default constructor
     public Flight() {
     }
 
-    // Constructor with fields
+    // Full constructor
     public Flight(String flightNumber, String departureCity, String arrivalCity,
-                  String departureHour, String arrivalHour, LocalDate departureDate,
-                  int numberOfSeat, BigDecimal firstClassSeatPrice, BigDecimal premiumSeatPrice,
+                  LocalTime departureHour, LocalTime arrivalHour, LocalDate departureDate,
+                  Integer numberOfSeat, BigDecimal firstClassSeatPrice, BigDecimal premiumSeatPrice,
                   BigDecimal businessClassPrice, BigDecimal economicsClassPrice,
                   Plane plane, Airport departureAirport, Airport arrivalAirport) {
         this.flightNumber = flightNumber;
@@ -59,6 +84,7 @@ public class Flight {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
     }
+
 
     // Getters and Setters
     public String getFlightNumber() {
@@ -85,19 +111,19 @@ public class Flight {
         this.arrivalCity = arrivalCity;
     }
 
-    public String getDepartureHour() {
+    public LocalTime getDepartureHour() {
         return departureHour;
     }
 
-    public void setDepartureHour(String departureHour) {
+    public void setDepartureHour(LocalTime departureHour) {
         this.departureHour = departureHour;
     }
 
-    public String getArrivalHour() {
+    public LocalTime getArrivalHour() {
         return arrivalHour;
     }
 
-    public void setArrivalHour(String arrivalHour) {
+    public void setArrivalHour(LocalTime arrivalHour) {
         this.arrivalHour = arrivalHour;
     }
 

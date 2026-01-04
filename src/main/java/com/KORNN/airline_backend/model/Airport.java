@@ -7,11 +7,17 @@ import jakarta.persistence.*;
 public class Airport {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // auto increment
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_airport")
     private Long idAirport;
 
+    @Column(name = "name_airport", nullable = false)
     private String nameAirport;
+
+    @Column(name = "country_airport")
     private String countryAirport;
+
+    @Column(name = "city_airport")
     private String cityAirport;
 
     // Default constructor (required by JPA)

@@ -8,12 +8,17 @@ public class Plane {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_plane")
     private Long idPlane;
 
+    @Column(name = "brand", nullable = false)
     private String brand;
-    private String model;
-    private Integer manufacturingYear;
 
+    @Column(name = "model", nullable = false)
+    private String model;
+
+    @Column(name = "manufacturing_year")
+    private Integer manufacturingYear;
     public Plane() {
     }
 

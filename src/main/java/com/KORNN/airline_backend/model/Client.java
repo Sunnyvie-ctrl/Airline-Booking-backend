@@ -7,8 +7,14 @@ import jakarta.persistence.*;
 @Table(name = "clients")
 public class Client extends User {
 
-    @Column(unique = true) // adds unique constraint to the column passport num
+
+    @Id
+    @Column(name = "num_passport")
     private String numPassport;
+
+    @OneToOne
+    @JoinColumn(name = "id_user", nullable = false)
+    private User user;
 
     // Default constructor (required by JPA)  because it needs it to be able to create objects with reflection
     public Client() {

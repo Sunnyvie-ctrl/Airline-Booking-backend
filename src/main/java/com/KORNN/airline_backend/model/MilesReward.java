@@ -10,18 +10,23 @@ public class MilesReward {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_miles_reward")
     private Long id;
 
-    @ManyToOne // many rewards can go to a client
-    @JoinColumn(name = "client_id")  // foreign key here
+    /** Many rewards can belong to one client */
+    @ManyToOne
+    @JoinColumn(name = "id_client", nullable = false)
     private Client client;
 
-    @ManyToOne // many rewards can occur for same flight
-    @JoinColumn(name = "flight_number")
+    /** Many rewards can be linked to the same flight */
+    @ManyToOne
+    @JoinColumn(name = "flight_number", nullable = false)
     private Flight flight;
 
+    @Column(name = "reward_date", nullable = false)
     private LocalDate date;
 
+    @Column(name = "discount_code", unique = true)
     private String discountCode;
 
     // Default constructor
