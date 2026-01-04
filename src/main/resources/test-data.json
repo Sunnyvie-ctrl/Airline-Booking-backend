@@ -1,0 +1,112 @@
+{
+    "planes": [
+        {
+            "brand": "Boeing",
+            "model": "737",
+            "manufacturingYear": 2020
+        },
+        {
+            "brand": "Airbus",
+            "model": "A320",
+            "manufacturingYear": 2019
+        }
+    ],
+    "airports": [
+        {
+            "nameAirport": "Charles de Gaulle",
+            "countryAirport": "France",
+            "cityAirport": "Paris"
+        },
+        {
+            "nameAirport": "Heathrow",
+            "countryAirport": "UK",
+            "cityAirport": "London"
+        },
+        {
+            "nameAirport": "JFK",
+            "countryAirport": "USA",
+            "cityAirport": "New York"
+        }
+    ],
+    "flights": [
+        {
+            "flightNumber": "TA101",
+            "departureCity": "Paris",
+            "arrivalCity": "London",
+            "departureHour": "08:00",
+            "arrivalHour": "09:30",
+            "departureDate": "2025-01-15",
+            "numberOfSeat": 150,
+            "firstClassSeatPrice": 500.00,
+            "premiumSeatPrice": 300.00,
+            "businessClassPrice": 200.00,
+            "economicsClassPrice": 100.00,
+            "plane": {"idPlane": 1},
+            "departureAirport": {"idAirport": 1},
+            "arrivalAirport": {"idAirport": 2}
+        },
+        {
+            "flightNumber": "TA102",
+            "departureCity": "London",
+            "arrivalCity": "New York",
+            "departureHour": "10:00",
+            "arrivalHour": "18:00",
+            "departureDate": "2025-01-15",
+            "numberOfSeat": 200,
+            "firstClassSeatPrice": 1500.00,
+            "premiumSeatPrice": 1000.00,
+            "businessClassPrice": 700.00,
+            "economicsClassPrice": 400.00,
+            "plane": {"idPlane": 2},
+            "departureAirport": {"idAirport": 2},
+            "arrivalAirport": {"idAirport": 3}
+        }
+    ],
+    "clients": [
+        {
+            "firstname": "John",
+            "lastname": "Doe",
+            "address": "123 Paris Street",
+            "email": "john@example.com",
+            "phone": "+33123456789",
+            "birthdate": "1990-05-15",
+            "numPassport": "AB123456"
+        },
+        {
+            "firstname": "Jane",
+            "lastname": "Smith",
+            "address": "456 London Road",
+            "email": "jane@example.com",
+            "phone": "+44987654321",
+            "birthdate": "1985-08-20",
+            "numPassport": "CD789012"
+        }
+    ],
+    "employees": [
+        {
+            "firstname": "Mike",
+            "lastname": "Johnson",
+            "address": "789 Airline Ave",
+            "email": "mike@timeout-airline.com",
+            "phone": "+33111222333",
+            "birthdate": "1980-03-10",
+            "numEmp": "E001",
+            "profession": "Pilot",
+            "title": "Captain"
+        }
+    ],
+    "bookings": [
+        {
+            "lastname": "Doe",
+            "firstname": "John",
+            "passportNumber": "AB123456",
+            "birthdate": "1990-05-15",
+            "departureCity": "Paris",
+            "arrivalCity": "London",
+            "departureHour": "08:00",
+            "arrivalHour": "09:30",
+            "flightNumber": "TA101",
+            "typeOfSeat": "BUSINESS"
+        }
+    ]
+}
