@@ -55,11 +55,11 @@ public class Booking {
         this.idReservation = idReservation;
     }
 
-    public Flight getFlightId() {
+    public Flight getFlight() {
         return flight;
     }
 
-    public void setFlightId(Flight flight) {
+    public void setFlight(Flight flight) {
         this.flight = flight;
     }
 

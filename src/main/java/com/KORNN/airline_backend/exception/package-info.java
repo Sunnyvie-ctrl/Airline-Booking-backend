@@ -1,1 +1,1 @@
-package fr.epita.timeoutairline.exception;
+package com.KORNN.airline_backend.exception;

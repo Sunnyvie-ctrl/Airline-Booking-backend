@@ -1,4 +1,4 @@
-package fr.epita.timeoutairline.exception;
+package com.KORNN.airline_backend.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
