@@ -61,7 +61,6 @@ Configure your database in src/main/resources/application.properties:
       spring.datasource.username=root
       spring.datasource.password=yourpassword
       spring.jpa.hibernate.ddl-auto=update
-      Build and run the project with Maven:
 
 Build and run the project with Maven:
 
@@ -73,7 +72,8 @@ The API runs on http://localhost:8080/ by default.
 
 API Endpoints (Examples)
 
-"Users:
+Users:
+```
 GET /users → List all users
 
 GET /users/{id} → Get user by ID
@@ -82,9 +82,11 @@ POST /users → Create a new user
 
 PUT /users/{id} → Update user
 
-DELETE /users/{id} → Delete user"
+DELETE /users/{id} → Delete user
+```
 
-"Flights:
+Flights:
+```
 GET /flights → List all flights
 
 GET /flights/search?departureCity=...&arrivalCity=...&date=... → Search flights
@@ -93,15 +95,17 @@ POST /flights → Create new flight
 
 PUT /flights/{id} → Update flight
 
-DELETE /flights/{id} → Delete flight"
-
-"Booking
+DELETE /flights/{id} → Delete flight
+```
+Booking
+```
 POST /bookings → Book a flight
 
 GET /bookings/{clientPassport} → List bookings for a client"
+```
 
 Example JSON Requests
-Create User
+Create User:
 
 ```json
 {
@@ -114,7 +118,7 @@ Create User
 }
 ```
 
-Book a Flight
+Book a Flight:
 ```json
 {
   "clientPassport": "A12345678",
@@ -123,7 +127,8 @@ Book a Flight
 }
 ```
 
-Notes
+## Notes
+
 Users must exist before creating a Client or Employee.
 
 Flights cannot be booked if no seats are available.
@@ -133,6 +138,6 @@ The application automatically updates the MilesReward table when a booking is ma
 If a client completes 3 flights in the same civil year, a random discount code is generated.
 
 
-License
+## License
 This project is for educational purposes and may not be used commercially without permission.
 
