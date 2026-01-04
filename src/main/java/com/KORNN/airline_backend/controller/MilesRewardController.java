@@ -1,9 +1,9 @@
-package fr.epita.timeoutairline.controller;
+package com.KORNN.airline_backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import fr.epita.timeoutairline.model.MilesReward;
-import fr.epita.timeoutairline.service.MilesRewardService;
+import com.KORNN.airline_backend.model.MilesReward;
+import com.KORNN.airline_backend.service.MilesRewardService;
 
 import java.util.List;
 

@@ -1,1 +1,1 @@
-package fr.epita.timeoutairline.controller;
+package com.KORNN.airline_backend.controller;

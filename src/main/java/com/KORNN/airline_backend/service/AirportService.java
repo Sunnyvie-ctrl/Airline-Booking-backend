@@ -2,8 +2,8 @@ package com.KORNN.airline_backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import fr.epita.timeoutairline.model.Airport;
-import fr.epita.timeoutairline.repository.AirportRepository;
+import com.KORNN.airline_backend.model.Airport;
+import com.KORNN.airline_backend.repository.AirportRepository;
 
 import java.util.List;
 import java.util.Optional;

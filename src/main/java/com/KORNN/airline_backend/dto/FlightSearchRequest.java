@@ -1,4 +1,4 @@
-package fr.epita.timeoutairline.dto;
+package com.KORNN.airline_backend.dto;
 
 import java.time.LocalDate;
 

@@ -1,6 +1,6 @@
-package fr.epita.timeoutairline.dto;
+package com.KORNN.airline_backend.dto;
 
-import fr.epita.timeoutairline.model.Booking.SeatType;
+import com.KORNN.airline_backend.model.Booking.SeatType;
 import java.time.LocalDate;
 
 public class BookingRequest {

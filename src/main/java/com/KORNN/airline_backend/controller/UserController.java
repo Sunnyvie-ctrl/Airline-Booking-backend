@@ -1,10 +1,10 @@
-package fr.epita.timeoutairline.controller;
+package com.KORNN.airline_backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import fr.epita.timeoutairline.model.User;
-import fr.epita.timeoutairline.service.UserService;
+import com.KORNN.airline_backend.model.User;
+import com.KORNN.airline_backend.service.UserService;
 
 import java.util.List;
 
@@ -15,8 +15,7 @@ public class UserController {
     @Autowired // injects the userService implementations here
     private UserService userService;
 
-    // CREATE - POST /api/v1/users
-    @PostMapping
+    // CREATE - POST /api/v1/usersstMapping
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }

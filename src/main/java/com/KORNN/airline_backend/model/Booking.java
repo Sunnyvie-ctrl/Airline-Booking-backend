@@ -47,19 +47,19 @@ public class Booking {
     }
 
     // Getters and Setters
-    public Long getIdReservation() {
+    public Long getReservationId() {
         return idReservation;
     }
 
-    public void setIdReservation(Long idReservation) {
+    public void setReservationId(Long idReservation) {
         this.idReservation = idReservation;
     }
 
-    public Flight getFlight() {
+    public Flight getFlightId() {
         return flight;
     }
 
-    public void setFlight(Flight flight) {
+    public void setFlightId(Flight flight) {
         this.flight = flight;
     }
 

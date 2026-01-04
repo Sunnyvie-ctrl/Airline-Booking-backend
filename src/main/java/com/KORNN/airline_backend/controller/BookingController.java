@@ -1,11 +1,11 @@
-package fr.epita.timeoutairline.controller;
+package com.KORNN.airline_backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import fr.epita.timeoutairline.model.Booking;
-import fr.epita.timeoutairline.service.BookingService;
-import fr.epita.timeoutairline.dto.BookingRequest;
+import com.KORNN.airline_backend.model.Booking;
+import com.KORNN.airline_backend.service.BookingService;
+import com.KORNN.airline_backend.dto.BookingRequest;
 
 import java.util.List;
 
