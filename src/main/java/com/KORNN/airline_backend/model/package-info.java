@@ -1,1 +1,1 @@
-package fr.epita.timeoutairline.model;
+package com.KORNN.airline_backend.model;

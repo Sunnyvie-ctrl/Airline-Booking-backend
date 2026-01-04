@@ -1,9 +1,9 @@
-package fr.epita.timeoutairline.service;
+package com.KORNN.airline_backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import fr.epita.timeoutairline.model.User;
-import fr.epita.timeoutairline.repository.UserRepository;
+import com.KORNN.airline_backend.model.User;
+import com.KORNN.airline_backend.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,5 +1,5 @@
 
-package fr.epita.timeoutairline.model;
+package com.KORNN.airline_backend.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;

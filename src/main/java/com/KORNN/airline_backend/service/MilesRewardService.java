@@ -1,10 +1,10 @@
-package fr.epita.timeoutairline.service;
+package com.KORNN.airline_backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import fr.epita.timeoutairline.model.Client;
-import fr.epita.timeoutairline.model.MilesReward;
-import fr.epita.timeoutairline.repository.MilesRewardRepository;
+import com.KORNN.airline_backend.model.Client;
+import com.KORNN.airline_backend.model.MilesReward;
+import com.KORNN.airline_backend.repository.MilesRewardRepository;
 
 import java.time.LocalDate;
 import java.util.List;

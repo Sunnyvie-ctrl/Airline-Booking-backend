@@ -1,12 +1,13 @@
-package fr.epita.timeoutairline.service;
+package com.KORNN.airline_backend.service;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import fr.epita.timeoutairline.model.*;
-import fr.epita.timeoutairline.repository.*;
-import fr.epita.timeoutairline.dto.BookingRequest;
-import fr.epita.timeoutairline.exception.ResourceNotFoundException;
-import fr.epita.timeoutairline.exception.NoSeatAvailableException;
+import com.KORNN.airline_backend.model.*;
+import com.KORNN.airline_backend.repository.*;
+import com.KORNN.airline_backend.dto.BookingRequest;
+import com.KORNN.airline_backend.exception.ResourceNotFoundException;
+import com.KORNN.airline_backend.exception.NoSeatAvailableException;
 
 import java.time.LocalDate;
 import java.util.List;

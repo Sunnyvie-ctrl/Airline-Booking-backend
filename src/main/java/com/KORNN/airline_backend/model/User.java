@@ -1,4 +1,4 @@
-package fr.epita.timeoutairline.model;
+package com.KORNN.airline_backend.model;
 
 import jakarta.persistence.*;   // Imports all JPA annotations (@Entity, @Table, @Column, etc.) so we can map this class to a database table.
 import java.time.LocalDate;
