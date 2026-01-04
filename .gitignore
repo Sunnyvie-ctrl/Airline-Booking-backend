@@ -31,3 +31,108 @@ build/
 
 ### VS Code ###
 .vscode/
+# ===============================
+
+# Maven / Java
+
+# ===============================
+
+target/
+
+*.class
+
+*.jar
+
+*.war
+
+*.ear
+
+
+# Maven wrapper
+
+.mvn/wrapper/maven-wrapper.jar
+
+
+# ===============================
+
+# IDE Files
+
+# ===============================
+
+# IntelliJ IDEA
+
+.idea/
+
+*.iml
+
+*.iws
+
+out/
+
+
+# Eclipse
+
+*.classpath
+
+*.project
+
+*.settings/
+
+*.factorypath
+
+
+# VSCode
+
+.vscode/
+
+
+# ===============================
+
+# Logs
+
+# ===============================
+
+*.log
+
+
+# ===============================
+
+# OS Files
+
+# ===============================
+
+.DS_Store
+
+Thumbs.db
+
+
+# ===============================
+
+# Environment / sensitive files
+
+# ===============================
+
+.env
+
+application.properties
+
+
+# ===============================
+
+# Spring Boot
+
+# ===============================
+
+spring-boot-devtools.properties
+
+
+# ===============================
+
+# Temporary / local files
+
+# ===============================
+
+*.tmp
+
+*.swp
+
