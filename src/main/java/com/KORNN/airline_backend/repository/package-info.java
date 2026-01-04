@@ -1,1 +1,1 @@
-package fr.epita.timeoutairline.repository;
+package com.KORNN.airline_backend.repository;

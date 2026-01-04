@@ -1,10 +1,10 @@
-package fr.epita.timeoutairline.repository;
+package com.KORNN.airline_backend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import fr.epita.timeoutairline.model.Booking;
-import fr.epita.timeoutairline.model.Client;
-import fr.epita.timeoutairline.model.Flight;
+import com.KORNN.airline_backend.model.Booking;
+import com.KORNN.airline_backend.model.Client;
+import com.KORNN.airline_backend.model.Flight;
 
 import java.util.List;
 
