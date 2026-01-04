@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeout Airline | Luxury Travel Redefined</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --champagne: #f7e7ce;
+            --gold: #c9a962;
+            --gold-dark: #a68a4a;
+            --charcoal: #2c2c2c;
+            --charcoal-light: #3d3d3d;
+            --ivory: #fdfbf7;
+            --cream: #f5f0e8;
+            --burgundy: #722f37;
+            --burgundy-light: #8b3a44;
+            --slate: #4a4a4a;
+            --text-light: #f5f5f5;
+            --text-muted: #9a9a9a;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--ivory);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+        
+        .nav.scrolled {
+            background: rgba(44, 44, 44, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 60px;
+        }
+        
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-decoration: none;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .nav-logo span { color: var(--gold); }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active { color: var(--gold); }
+        .nav-links a.active::after { width: 100%; }
+        
+        /* Hero with Slideshow */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: slideshow 24s infinite;
+        }
+        
+        .hero-slide:nth-child(1) { animation-delay: 0s; }
+        .hero-slide:nth-child(2) { animation-delay: 6s; }
+        .hero-slide:nth-child(3) { animation-delay: 12s; }
+        .hero-slide:nth-child(4) { animation-delay: 18s; }
+        
+        @keyframes slideshow {
+            0% { opacity: 0; transform: scale(1); }
+            4% { opacity: 1; }
+            25% { opacity: 1; }
+            29% { opacity: 0; transform: scale(1.1); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(44, 44, 44, 0.8) 0%, rgba(44, 44, 44, 0.5) 50%, rgba(114, 47, 55, 0.4) 100%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: var(--text-light);
+            max-width: 900px;
+            padding: 0 40px;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-tagline {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+        
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        .hero-title span {
+            font-style: italic;
+            color: var(--gold);
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 18px 45px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+        
+        .btn-primary:hover {
+            background: var(--champagne);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 169, 98, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: scrollDown 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        
+        @keyframes scrollDown {
+            0% { opacity: 1; top: 10px; }
+            100% { opacity: 0; top: 25px; }
+        }
+        
+        /* Features */
+        .features {
+            padding: 120px 60px;
+            background: var(--charcoal);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--text-light);
+            letter-spacing: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: var(--charcoal-light);
+            padding: 50px 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+        }
+        
+        .feature-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        .feature-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        
+        /* Crew */
+        .crew {
+            padding: 120px 60px;
+            background: var(--cream);
+        }
+        
+        .crew-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .crew-images {
+            position: relative;
+            height: 600px;
+        }
+        
+        .crew-img {
+            position: absolute;
+            object-fit: cover;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .crew-img-1 {
+            width: 350px;
+            height: 450px;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+        
+        .crew-img-2 {
+            width: 280px;
+            height: 350px;
+            bottom: 0;
+            right: 0;
+            z-index: 1;
+        }
+        
+        .crew-img-frame {
+            position: absolute;
+            width: 350px;
+            height: 450px;
+            border: 2px solid var(--gold);
+            top: 30px;
+            left: 30px;
+            z-index: 1;
+        }
+        
+        .crew-text .section-label { text-align: left; color: var(--burgundy); }
+        .crew-text .section-title { text-align: left; color: var(--charcoal); margin-bottom: 30px; }
+        
+        .crew-description {
+            font-size: 1.1rem;
+            color: var(--slate);
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+        
+        .crew-stats { display: flex; gap: 60px; }
+        
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--burgundy);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--slate);
+            margin-top: 10px;
+        }
+        
+        /* Management */
+        .management {
+            padding: 60px;
+            background: var(--ivory);
+        }
+        
+        .management-container { max-width: 1600px; margin: 0 auto; }
+        
+        .management-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(44, 44, 44, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .management-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--charcoal);
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 5px;
+            background: var(--cream);
+            padding: 8px;
+            border-radius: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 14px 28px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--slate);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .tab:hover { color: var(--charcoal); }
+        .tab.active { background: var(--charcoal); color: var(--text-light); }
+        
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+        
+        /* Forms */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group { margin-bottom: 15px; }
+        
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--slate);
+            margin-bottom: 10px;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--charcoal);
+            background: var(--cream);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(201, 169, 98, 0.1);
+        }
+        
+        /* Buttons */
+        .btn-gold {
+            background: var(--gold);
+            color: var(--charcoal);
+            padding: 16px 35px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-gold:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-dark { background: var(--charcoal); color: var(--text-light); }
+        .btn-dark:hover { background: var(--charcoal-light); }
+        .btn-burgundy { background: var(--burgundy); color: var(--text-light); }
+        .btn-burgundy:hover { background: var(--burgundy-light); }
+        .btn-sm { padding: 10px 20px; font-size: 0.7rem; }
+        .btn-icon { 
+            width: 36px; 
+            height: 36px; 
+            padding: 0; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 50%; 
+            margin: 2px;
+            font-size: 0.85rem;
+        }
+        
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; }
+        
+        th {
+            padding: 18px 20px;
+            text-align: left;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            background: var(--cream);
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        td {
+            padding: 20px;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        
+        tr { transition: all 0.3s ease; }
+        tr:hover { background: var(--cream); }
+        tr.clickable { cursor: pointer; }
+        tr.clickable:hover { background: rgba(201, 169, 98, 0.1); }
+        
+        .flight-number { font-weight: 600; color: var(--burgundy); }
+        .route { display: flex; align-items: center; gap: 15px; }
+        .route-arrow { color: var(--gold); font-size: 1.2rem; }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 20px;
+        }
+        
+        .badge-gold { background: rgba(201, 169, 98, 0.15); color: var(--gold-dark); }
+        .badge-burgundy { background: rgba(114, 47, 55, 0.15); color: var(--burgundy); }
+        .badge-success { background: rgba(46, 125, 50, 0.15); color: #2e7d32; }
+        
+        .price { font-weight: 600; }
+        .price-currency { font-size: 0.8rem; color: var(--text-muted); }
+        
+        .actions { white-space: nowrap; }
+        
+        /* Alerts */
+        .alert {
+            padding: 20px 25px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .alert-success { background: rgba(46, 125, 50, 0.1); border-left: 4px solid #2e7d32; color: #1b5e20; }
+        .alert-error { background: rgba(198, 40, 40, 0.1); border-left: 4px solid #c62828; color: #b71c1c; }
+        .alert-info { background: rgba(201, 169, 98, 0.1); border-left: 4px solid var(--gold); color: var(--charcoal); }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 44, 44, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.show { display: flex; }
+        
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px;
+            background: var(--charcoal);
+            color: var(--text-light);
+        }
+        
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+        }
+        
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover { background: var(--gold); border-color: var(--gold); color: var(--charcoal); }
+        .modal-body { padding: 40px; }
+        
+        /* Empty State */
+        .empty-state { text-align: center; padding: 80px 40px; color: var(--text-muted); }
+        .empty-state-icon { font-size: 4rem; margin-bottom: 20px; opacity: 0.3; }
+        .empty-state-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; }
+        
+        /* Loading */
+        .loading { text-align: center; padding: 60px; color: var(--text-muted); }
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--cream);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        /* Click hint */
+        .click-hint { font-size: 0.75rem; color: var(--gold); font-style: italic; margin-top: 5px; }
+        
+        /* Auto-filled highlight */
+        .auto-filled { background: rgba(201, 169, 98, 0.15) !important; border-color: var(--gold) !important; }
+        .booking-highlight { background: linear-gradient(135deg, rgba(201, 169, 98, 0.1), rgba(114, 47, 55, 0.05)); border: 2px solid var(--gold); animation: pulse 2s ease-in-out; }
+        @keyframes pulse { 0%, 100% { border-color: var(--gold); } 50% { border-color: var(--burgundy); } }
+        
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            padding: 80px 60px 40px;
+            color: var(--text-light);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+        
+        .footer-brand span { color: var(--gold); }
+        .footer-description { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+        .footer-title { font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 25px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--gold); }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 60px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .crew-content { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .hero-title { font-size: 3rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .tabs { flex-wrap: wrap; border-radius: 15px; }
+            .tab { padding: 12px 20px; font-size: 0.7rem; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <a href="#home" class="nav-logo">Timeout <span>Airline</span></a>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#features">Experience</a></li>
+            <li><a href="#crew">Our Crew</a></li>
+            <li><a href="#management">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slideshow">
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=1920&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?w=1920&q=80');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-tagline">EPITA Java Project</p>
+            <h1 class="hero-title">Luxury Travel <span>Redefined</span></h1>
+            <p class="hero-description">Experience the pinnacle of air travel with Timeout Airline.</p>
+            <div class="hero-buttons">
+                <a href="#management" class="btn btn-primary" onclick="setTimeout(function() { showTab('booking'); }, 500);">Book Your Flight</a>
+                <a href="#features" class="btn btn-outline">Discover More</a>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span></span></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <p class="section-label">The Timeout Experience</p>
+            <h2 class="section-title">Unparalleled Excellence</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✈</div>
+                <h3 class="feature-title">Premium Fleet</h3>
+                <p class="feature-text">Our modern fleet features the latest aircraft.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3 class="feature-title">Miles Rewards</h3>
+                <p class="feature-text">Earn exclusive rewards with every flight.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">♛</div>
+                <h3 class="feature-title">First Class Service</h3>
+                <p class="feature-text">Experience service that exceeds expectations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crew Section -->
+    <section class="crew" id="crew">
+        <div class="crew-content">
+            <div class="crew-images">
+                <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=600&h=800&fit=crop" alt="Flight Attendant" class="crew-img crew-img-1">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&h=600&fit=crop" alt="Aircraft" class="crew-img crew-img-2">
+                <div class="crew-img-frame"></div>
+            </div>
+            <div class="crew-text">
+                <p class="section-label">Our Team</p>
+                <h2 class="section-title">Dedicated to Your Comfort</h2>
+                <p class="crew-description">Our world-class cabin crew transforms every flight into an exceptional journey.</p>
+                <div class="crew-stats">
+                    <div class="stat"><div class="stat-number">500+</div><div class="stat-label">Expert Crew</div></div>
+                    <div class="stat"><div class="stat-number">50+</div><div class="stat-label">Destinations</div></div>
+                    <div class="stat"><div class="stat-number">98%</div><div class="stat-label">Satisfaction</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Management Section -->
+    <section class="management" id="management">
+        <div class="management-container">
+            <div class="management-header">
+                <h2 class="management-title">Flight Management</h2>
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab('flights')">Flights</button>
+                    <button class="tab" onclick="showTab('search')">Search</button>
+                    <button class="tab" onclick="showTab('booking')">Book</button>
+                    <button class="tab" onclick="showTab('bookings')">Bookings</button>
+                    <button class="tab" onclick="showTab('clients')">Clients</button>
+                    <button class="tab" onclick="showTab('employees')">Staff</button>
+                    <button class="tab" onclick="showTab('planes')">Fleet</button>
+                    <button class="tab" onclick="showTab('airports')">Airports</button>
+                    <button class="tab" onclick="showTab('rewards')">Rewards</button>
+                </div>
+            </div>
+
+            <!-- FLIGHTS TAB -->
+            <div id="flights" class="tab-content active">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Available Flights</h3>
+                        <button class="btn btn-gold btn-sm" onclick="loadFlights()">Refresh</button>
+                    </div>
+                    <div id="flightsTable"><div class="loading"><div class="loading-spinner"></div><p>Click refresh to load...</p></div></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Add New Flight</h3></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Flight Number *</label><input type="text" id="flightNumber" placeholder="TA101"></div>
+                        <div class="form-group"><label>Departure City *</label><input type="text" id="flightDepartureCity" placeholder="Paris"></div>
+                        <div class="form-group"><label>Arrival City *</label><input type="text" id="flightArrivalCity" placeholder="London"></div>
+                        <div class="form-group"><label>Departure Time</label><input type="text" id="flightDepartureHour" placeholder="08:00"></div>
+                        <div class="form-group"><label>Arrival Time</label><input type="text" id="flightArrivalHour" placeholder="09:30"></div>
+                        <div class="form-group"><label>Departure Date *</label><input type="date" id="flightDepartureDate"></div>
+                        <div class="form-group"><label>Available Seats *</label><input type="number" id="flightSeats" placeholder="150"></div>
+                        <div class="form-group"><label>First Class (€)</label><input type="number" step="0.01" id="flightFirstClass" placeholder="500"></div>
+                        <div class="form-group"><label>Premium (€)</label><input type="number" step="0.01" id="flightPremium" placeholder="300"></div>
+                        <div class="form-group"><label>Business (€)</label><input type="number" step="0.01" id="flightBusiness" placeholder="200"></div>
+                        <div class="form-group"><label>Economy (€)</label><input type="number" step="0.01" id="flightEconomics" placeholder="100"></div>
+                        <div class="form-group"><label>Plane ID *</label><input type="number" id="flightPlaneId" placeholder="1"></div>
+                        <div class="form-group"><label>Departure Airport ID *</label><input type="number" id="flightDepartureAirportId" placeholder="1"></div>
+                        <div class="form-group"><label>Arrival Airport ID *</label><input type="number" id="flightArrivalAirportId" placeholder="2"></div>
+                    </div>
+                    <button class="btn btn-gold" onclick="addFlight()">Add Flight</button>
+                    <div id="flightResult"></div>
+                </div>
+            </div>
+
+            <!-- SEARCH TAB -->
+            <div id="search" class="tab-content">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Search Flights</h3></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>From</label><input type="text" id="searchFrom" placeholder="Departure City"></div>
+                        <div class="form-group"><label>To</label><input type="text" id="searchTo" placeholder="Arrival City"></div>
+                        <div class="form-group"><label>Date</label><input type="date" id="searchDate"></div>
+                    </div>
+                    <button class="btn btn-gold" onclick="searchFlights()">Search</button>
+                    <div id="searchResults"></div>
+                </div>
+            </div>
+
+            <!-- BOOKING TAB -->
+            <div id="booking" class="tab-content">
+                <div class="card" id="bookingCard">
+                    <div class="card-header"><h3 class="card-title">Book Your Flight</h3></div>
+                    <div class="alert alert-info" id="bookingInfo" style="display: none;"><span>✈</span><span id="bookingInfoText"></span></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>First Name *</label><input type="text" id="bookFirstname" placeholder="John"></div>
+                        <div class="form-group"><label>Last Name *</label><input type="text" id="bookLastname" placeholder="Doe"></div>
+                        <div class="form-group"><label>Email *</label><input type="email" id="bookEmail" placeholder="john.doe@email.com"></div>
+                        <div class="form-group"><label>Passport Number *</label><input type="text" id="bookPassport" placeholder="AB123456"></div>
+                        <div class="form-group"><label>Date of Birth *</label><input type="date" id="bookBirthdate"></div>
+                        <div class="form-group"><label>Flight Number *</label><input type="text" id="bookFlightNumber" placeholder="TA101"></div>
+                        <div class="form-group"><label>Class *</label><select id="bookSeatType"><option value="ECONOMICS">Economy</option><option value="BUSINESS">Business</option><option value="PREMIUM">Premium</option><option value="FIRST_CLASS">First Class</option></select></div>
+                    </div>
+                    <button class="btn btn-burgundy" onclick="bookFlight()">Complete Booking</button>
+                    <div id="bookingResult"></div>
+                </div>
+            </div>
+
+            <!-- BOOKINGS TAB -->
+            <div id="bookings" class="tab-content">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">All Reservations</h3><button class="btn btn-gold btn-sm" onclick="loadBookings()">Refresh</button></div>
+                    <div id="bookingsTable"><div class="loading"><div class="loading-spinner"></div><p>Click refresh to load...</p></div></div>
+                </div>
+            </div>
+
+            <!-- CLIENTS TAB -->
+            <div id="clients" class="tab-content">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Client Directory</h3><button class="btn btn-gold btn-sm" onclick="loadClients()">Refresh</button></div>
+                    <div id="clientsTable"><div class="loading"><div class="loading-spinner"></div><p>Click refresh to load...</p></div></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Register New Client</h3></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>First Name *</label><input type="text" id="clientFirstname" placeholder="John"></div>
+                        <div class="form-group"><label>Last Name *</label><input type="text" id="clientLastname" placeholder="Doe"></div>
+                        <div class="form-group"><label>Email *</label><input type="email" id="clientEmail" placeholder="john@example.com"></div>
+                        <div class="form-group"><label>Phone</label><input type="text" id="clientPhone" placeholder="+33 1 23 45 67 89"></div>
+                        <div class="form-group"><label>Address</label><input type="text" id="clientAddress" placeholder="123 Main St"></div>
+                        <div class="form-group"><label>Date of Birth *</label><input type="date" id="clientBirthdate"></div>
+                        <div class="form-group"><label>Passport Number *</label><input type="text" id="clientPassport" placeholder="AB123456"></div>
+                    </div>
+                    <button class="btn btn-gold" onclick="addClient()">Register Client</button>
+                    <div id="clientResult"></div>
+                </div>
+            </div>
+
+            <!-- EMPLOYEES TAB -->
+            <div id="employees" class="tab-content">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Staff Directory</h3><button class="btn btn-gold btn-sm" onclick="loadEmployees()">Refresh</button></div>
+                    <div id="employeesTable"><div class="loading"><div class="loading-spinner"></div><p>Click refresh...</p></div></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Add Staff Member</h3></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>First Name *</label><input type="text" id="empFirstname" placeholder="Marie"></div>
+                        <div class="form-group"><label>Last Name *</label><input type="text" id="empLastname" placeholder="Laurent"></div>
+                        <div class="form-group"><label>Email *</label><input type="email" id="empEmail" placeholder="m.laurent@timeout.air"></div>
+                        <div class="form-group"><label>Phone</label><input type="text" id="empPhone" placeholder="+33 1 23 45 67 89"></div>
+                        <div class="form-group"><label>Address</label><input type="text" id="empAddress" placeholder="Airport Road"></div>
+                        <div class="form-group"><label>Date of Birth</label><input type="date" id="empBirthdate"></div>
+                        <div class="form-group"><label>Employee ID *</label><input type="text" id="empNumber" placeholder="EMP001"></div>
+                        <div class="form-group"><label>Position *</label><input type="text" id="empProfession" placeholder="Pilot"></div>
+                        <div class="form-group"><label>Title *</label><input type="text" id="empTitle" placeholder="Captain"></div>
+                    </div>
+                    <button class="btn btn-gold" onclick="addEmployee()">Add Staff</button>
+                    <div id="employeeResult"></div>
+                </div>
+            </div>
+
+            <!-- PLANES TAB -->
+            <div id="planes" class="tab-content">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Our Fleet</h3><button class="btn btn-gold btn-sm" onclick="loadPlanes()">Refresh</button></div>
+                    <div id="planesTable"><div class="loading"><div class="loading-spinner"></div><p>Click refresh...</p></div></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Add Aircraft</h3></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Manufacturer *</label><input type="text" id="planeBrand" placeholder="Boeing"></div>
+                        <div class="form-group"><label>Model *</label><input type="text" id="planeModel" placeholder="787"></div>
+                        <div class="form-group"><label>Year *</label><input type="number" id="planeYear" placeholder="2023"></div>
+                    </div>
+                    <button class="btn btn-gold" onclick="addPlane()">Add Aircraft</button>
+                    <div id="planeResult"></div>
+                </div>
+            </div>
+
+            <!-- AIRPORTS TAB -->
+            <div id="airports" class="tab-content">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Destinations</h3><button class="btn btn-gold btn-sm" onclick="loadAirports()">Refresh</button></div>
+                    <div id="airportsTable"><div class="loading"><div class="loading-spinner"></div><p>Click refresh...</p></div></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Add Destination</h3></div>
+                    <div class="form-grid">
+                        <div class="form-group"><label>Airport Name *</label><input type="text" id="airportName" placeholder="Charles de Gaulle"></div>
+                        <div class="form-group"><label>Country *</label><input type="text" id="airportCountry" placeholder="France"></div>
+                        <div class="form-group"><label>City *</label><input type="text" id="airportCity" placeholder="Paris"></div>
+                    </div>
+                    <button class="btn btn-gold" onclick="addAirport()">Add Destination</button>
+                    <div id="airportResult"></div>
+                </div>
+            </div>
+
+            <!-- REWARDS TAB -->
+            <div id="rewards" class="tab-content">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title">Miles Rewards</h3><button class="btn btn-gold btn-sm" onclick="loadRewards()">Refresh</button></div>
+                    <div class="alert alert-info"><span>⭐</span><span>Earn discount codes after every 3 flights!</span></div>
+                    <div id="rewardsTable"><div class="loading"><div class="loading-spinner"></div><p>Click refresh...</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div><div class="footer-brand">Timeout <span>Airline</span></div><p class="footer-description">Experience luxury travel redefined.</p></div>
+            <div><h4 class="footer-title">Quick Links</h4><ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#features">Experience</a></li><li><a href="#management">Book Now</a></li></ul></div>
+            <div><h4 class="footer-title">Services</h4><ul class="footer-links"><li><a href="#">First Class</a></li><li><a href="#">Business Class</a></li><li><a href="#">Miles Rewards</a></li></ul></div>
+            <div><h4 class="footer-title">Contact</h4><ul class="footer-links"><li><a href="#">support@timeout.air</a></li><li><a href="#">+33 1 23 45 67 89</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>© 2025 Timeout Airline. EPITA Java Project.</p><p>Crafted with elegance</p></div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title" id="modalTitle">Edit</h3><button class="modal-close" onclick="closeModal()">×</button></div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        var API_BASE = 'http://localhost:8084/api/v1';
+        
+        // Store data for editing
+        var dataStore = {
+            flights: {},
+            bookings: {},
+            clients: {},
+            employees: {},
+            planes: {},
+            airports: {}
+        };
+
+        // Navigation scroll
+        window.addEventListener('scroll', function() {
+            var nav = document.getElementById('navbar');
+            if (window.scrollY > 100) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Tab switching
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('.tab').forEach(function(t) {
+                if (t.textContent.toLowerCase().includes(tabId.substring(0, 4))) t.classList.add('active');
+            });
+        }
+
+        // Modal
+        function openModal(title, content) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalBody').innerHTML = content;
+            document.getElementById('editModal').classList.add('show');
+        }
+        
+        function closeModal() { 
+            document.getElementById('editModal').classList.remove('show'); 
+        }
+        
+        document.getElementById('editModal').addEventListener('click', function(e) { 
+            if (e.target === this) closeModal(); 
+        });
+
+        // Escape HTML
+        function esc(str) {
+            if (str === null || str === undefined) return '';
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        // ==================== FLIGHTS ====================
+        async function loadFlights() {
+            try {
+                var response = await fetch(API_BASE + '/flights');
+                var flights = await response.json();
+                if (flights.length === 0) { 
+                    document.getElementById('flightsTable').innerHTML = '<div class="empty-state"><div class="empty-state-icon">✈</div><p class="empty-state-text">No flights available.</p></div>'; 
+                    return; 
+                }
+                dataStore.flights = {};
+                var html = '<table><tr><th>Flight</th><th>Route</th><th>Date</th><th>Time</th><th>Seats</th><th>Economy</th><th>Actions</th></tr>';
+                flights.forEach(function(f) {
+                    dataStore.flights[f.flightNumber] = f;
+                    html += '<tr>' +
+                        '<td><span class="flight-number">' + esc(f.flightNumber) + '</span></td>' +
+                        '<td><div class="route"><span>' + esc(f.departureCity) + '</span><span class="route-arrow">→</span><span>' + esc(f.arrivalCity) + '</span></div></td>' +
+                        '<td>' + esc(f.departureDate || '—') + '</td>' +
+                        '<td>' + esc(f.departureHour || '—') + '</td>' +
+                        '<td><span class="badge badge-gold">' + f.numberOfSeat + '</span></td>' +
+                        '<td><span class="price">€' + (f.economicsClassPrice || 0) + '</span></td>' +
+                        '<td class="actions">' +
+                            '<button class="btn btn-gold btn-icon" onclick="editFlight(\'' + esc(f.flightNumber) + '\')">✎</button>' +
+                            '<button class="btn btn-burgundy btn-icon" onclick="deleteFlight(\'' + esc(f.flightNumber) + '\')">✕</button>' +
+                        '</td></tr>';
+                });
+                document.getElementById('flightsTable').innerHTML = html + '</table>';
+            } catch (e) { 
+                document.getElementById('flightsTable').innerHTML = '<div class="alert alert-error"><span>!</span><span>Server error. Check port 8084.</span></div>'; 
+            }
+        }
+
+        async function addFlight() {
+            var flight = { 
+                flightNumber: document.getElementById('flightNumber').value, 
+                departureCity: document.getElementById('flightDepartureCity').value, 
+                arrivalCity: document.getElementById('flightArrivalCity').value, 
+                departureHour: document.getElementById('flightDepartureHour').value, 
+                arrivalHour: document.getElementById('flightArrivalHour').value, 
+                departureDate: document.getElementById('flightDepartureDate').value, 
+                numberOfSeat: parseInt(document.getElementById('flightSeats').value) || 0, 
+                firstClassSeatPrice: parseFloat(document.getElementById('flightFirstClass').value) || 0, 
+                premiumSeatPrice: parseFloat(document.getElementById('flightPremium').value) || 0, 
+                businessClassPrice: parseFloat(document.getElementById('flightBusiness').value) || 0, 
+                economicsClassPrice: parseFloat(document.getElementById('flightEconomics').value) || 0, 
+                plane: { idPlane: parseInt(document.getElementById('flightPlaneId').value) || 1 }, 
+                departureAirport: { idAirport: parseInt(document.getElementById('flightDepartureAirportId').value) || 1 }, 
+                arrivalAirport: { idAirport: parseInt(document.getElementById('flightArrivalAirportId').value) || 2 } 
+            };
+            try {
+                var response = await fetch(API_BASE + '/flights', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(flight) });
+                if (response.ok) { 
+                    document.getElementById('flightResult').innerHTML = '<div class="alert alert-success"><span>✓</span><span>Flight added!</span></div>'; 
+                    loadFlights(); 
+                } else { 
+                    var error = await response.json(); 
+                    document.getElementById('flightResult').innerHTML = '<div class="alert alert-error"><span>!</span><span>' + esc(error.message || 'Error') + '</span></div>'; 
+                }
+            } catch (e) { 
+                document.getElementById('flightResult').innerHTML = '<div class="alert alert-error"><span>!</span><span>Connection error.</span></div>'; 
+            }
+        }
+
+        function editFlight(flightNumber) {
+            var f = dataStore.flights[flightNumber];
+            if (!f) return alert('Flight not found');
+            var content = '<div class="form-group"><label>Flight Number</label><input type="text" value="' + esc(f.flightNumber) + '" disabled style="opacity:0.6;"></div>' +
+                '<div class="form-group"><label>Departure City</label><input type="text" id="editFlightDepCity" value="' + esc(f.departureCity) + '"></div>' +
+                '<div class="form-group"><label>Arrival City</label><input type="text" id="editFlightArrCity" value="' + esc(f.arrivalCity) + '"></div>' +
+                '<div class="form-group"><label>Departure Hour</label><input type="text" id="editFlightDepHour" value="' + esc(f.departureHour || '') + '"></div>' +
+                '<div class="form-group"><label>Arrival Hour</label><input type="text" id="editFlightArrHour" value="' + esc(f.arrivalHour || '') + '"></div>' +
+                '<div class="form-group"><label>Departure Date</label><input type="date" id="editFlightDate" value="' + esc(f.departureDate || '') + '"></div>' +
+                '<div class="form-group"><label>Seats</label><input type="number" id="editFlightSeats" value="' + f.numberOfSeat + '"></div>' +
+                '<div class="form-group"><label>Economy Price</label><input type="number" step="0.01" id="editFlightEcon" value="' + (f.economicsClassPrice || 0) + '"></div>' +
+                '<button class="btn btn-gold" onclick="updateFlight(\'' + esc(f.flightNumber) + '\')">Save Changes</button>';
+            openModal('Edit Flight ' + f.flightNumber, content);
+        }
+
+        async function updateFlight(flightNumber) {
+            var flight = {
+                flightNumber: flightNumber,
+                departureCity: document.getElementById('editFlightDepCity').value,
+                arrivalCity: document.getElementById('editFlightArrCity').value,
+                departureHour: document.getElementById('editFlightDepHour').value,
+                arrivalHour: document.getElementById('editFlightArrHour').value,
+                departureDate: document.getElementById('editFlightDate').value,
+                numberOfSeat: parseInt(document.getElementById('editFlightSeats').value) || 0,
+                economicsClassPrice: parseFloat(document.getElementById('editFlightEcon').value) || 0
+            };
+            try {
+                await fetch(API_BASE + '/flights/' + flightNumber, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(flight) });
+                closeModal();
+                loadFlights();
+            } catch (e) { alert('Error updating flight'); }
+        }
+
+        async function deleteFlight(num) { 
+            if (!confirm('Delete flight ' + num + '?')) return; 
+            try { 
+                await fetch(API_BASE + '/flights/' + num, { method: 'DELETE' }); 
+                loadFlights(); 
+            } catch (e) { alert('Error deleting flight'); } 
+        }
+
+        // ==================== SEARCH ====================
+        async function searchFlights() {
+            var from = document.getElementById('searchFrom').value;
+            var to = document.getElementById('searchTo').value;
+            var date = document.getElementById('searchDate').value;
+            try {
+                var response = await fetch(API_BASE + '/flights/search?from=' + encodeURIComponent(from) + '&to=' + encodeURIComponent(to) + '&date=' + encodeURIComponent(date));
+                var flights = await response.json();
+                if (flights.length === 0) { 
+                    document.getElementById('searchResults').innerHTML = '<div class="alert alert-info"><span>ℹ</span><span>No flights found.</span></div>'; 
+                    return; 
+                }
+                var html = '<table><tr><th>Flight</th><th>Route</th><th>Economy</th><th>Business</th></tr>';
+                flights.forEach(function(f) { 
+                    html += '<tr><td><span class="flight-number">' + esc(f.flightNumber) + '</span></td>' +
+                        '<td>' + esc(f.departureCity) + ' → ' + esc(f.arrivalCity) + '</td>' +
+                        '<td>€' + f.economicsClassPrice + '</td><td>€' + f.businessClassPrice + '</td></tr>'; 
+                });
+                document.getElementById('searchResults').innerHTML = html + '</table>';
+            } catch (e) { 
+                document.getElementById('searchResults').innerHTML = '<div class="alert alert-error"><span>!</span><span>Search failed.</span></div>'; 
+            }
+        }
+
+        // ==================== BOOKING ====================
+        async function bookFlight() {
+            var booking = { 
+                firstname: document.getElementById('bookFirstname').value, 
+                lastname: document.getElementById('bookLastname').value, 
+                email: document.getElementById('bookEmail').value, 
+                passportNumber: document.getElementById('bookPassport').value, 
+                birthdate: document.getElementById('bookBirthdate').value, 
+                flightNumber: document.getElementById('bookFlightNumber').value, 
+                typeOfSeat: document.getElementById('bookSeatType').value 
+            };
+            try {
+                var response = await fetch(API_BASE + '/bookings/book', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(booking) });
+                var result = await response.json();
+                if (response.ok) { 
+                    document.getElementById('bookingResult').innerHTML = '<div class="alert alert-success"><span>✓</span><span>Booking #' + result.idReservation + ' confirmed!</span></div>'; 
+                } else { 
+                    document.getElementById('bookingResult').innerHTML = '<div class="alert alert-error"><span>!</span><span>' + esc(result.message || 'Error') + '</span></div>'; 
+                }
+            } catch (e) { 
+                document.getElementById('bookingResult').innerHTML = '<div class="alert alert-error"><span>!</span><span>Booking failed.</span></div>'; 
+            }
+        }
+
+        // ==================== BOOKINGS ====================
+        async function loadBookings() {
+            try {
+                var response = await fetch(API_BASE + '/bookings');
+                var bookings = await response.json();
+                if (bookings.length === 0) { 
+                    document.getElementById('bookingsTable').innerHTML = '<div class="empty-state"><div class="empty-state-icon">📋</div><p class="empty-state-text">No reservations.</p></div>'; 
+                    return; 
+                }
+                dataStore.bookings = {};
+                var html = '<table><tr><th>ID</th><th>Passenger</th><th>Flight</th><th>Class</th><th>Actions</th></tr>';
+                bookings.forEach(function(b) { 
+                    dataStore.bookings[b.idReservation] = b;
+                    html += '<tr><td>#' + b.idReservation + '</td>' +
+                        '<td>' + esc((b.client ? b.client.firstname : '') + ' ' + (b.client ? b.client.lastname : '')) + '</td>' +
+                        '<td>' + esc(b.flight ? b.flight.flightNumber : '—') + '</td>' +
+                        '<td><span class="badge badge-burgundy">' + esc(b.typeOfSeat) + '</span></td>' +
+                        '<td class="actions">' +
+                            '<button class="btn btn-gold btn-icon" onclick="editBooking(' + b.idReservation + ')">✎</button>' +
+                            '<button class="btn btn-burgundy btn-icon" onclick="deleteBooking(' + b.idReservation + ')">✕</button>' +
+                        '</td></tr>'; 
+                });
+                document.getElementById('bookingsTable').innerHTML = html + '</table>';
+            } catch (e) { 
+                document.getElementById('bookingsTable').innerHTML = '<div class="alert alert-error"><span>!</span><span>Error loading.</span></div>'; 
+            }
+        }
+
+        function editBooking(id) {
+            var b = dataStore.bookings[id];
+            if (!b) return alert('Booking not found');
+            var content = '<div class="form-group"><label>Booking ID</label><input type="text" value="#' + id + '" disabled style="opacity:0.6;"></div>' +
+                '<div class="form-group"><label>Seat Type</label><select id="editBookingSeat">' +
+                '<option value="ECONOMICS"' + (b.typeOfSeat === 'ECONOMICS' ? ' selected' : '') + '>Economy</option>' +
+                '<option value="BUSINESS"' + (b.typeOfSeat === 'BUSINESS' ? ' selected' : '') + '>Business</option>' +
+                '<option value="PREMIUM"' + (b.typeOfSeat === 'PREMIUM' ? ' selected' : '') + '>Premium</option>' +
+                '<option value="FIRST_CLASS"' + (b.typeOfSeat === 'FIRST_CLASS' ? ' selected' : '') + '>First Class</option>' +
+                '</select></div>' +
+                '<button class="btn btn-gold" onclick="updateBooking(' + id + ')">Save Changes</button>';
+            openModal('Edit Booking #' + id, content);
+        }
+
+        async function updateBooking(id) {
+            var booking = { typeOfSeat: document.getElementById('editBookingSeat').value };
+            try {
+                await fetch(API_BASE + '/bookings/' + id, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(booking) });
+                closeModal();
+                loadBookings();
+            } catch (e) { alert('Error updating booking'); }
+        }
+
+        async function deleteBooking(id) { 
+            if (!confirm('Cancel booking #' + id + '?')) return; 
+            try { 
+                await fetch(API_BASE + '/bookings/' + id, { method: 'DELETE' }); 
+                loadBookings(); 
+            } catch (e) { alert('Error'); } 
+        }
+
+        // ==================== CLIENTS ====================
+        async function loadClients() {
+            try {
+                var response = await fetch(API_BASE + '/clients');
+                var clients = await response.json();
+                if (clients.length === 0) { 
+                    document.getElementById('clientsTable').innerHTML = '<div class="empty-state"><div class="empty-state-icon">👤</div><p class="empty-state-text">No clients.</p></div>'; 
+                    return; 
+                }
+                dataStore.clients = {};
+                var html = '<table><tr><th>ID</th><th>Name</th><th>Email</th><th>Passport</th><th>Actions</th></tr>';
+                clients.forEach(function(c) { 
+                    dataStore.clients[c.idUser] = c;
+                    html += '<tr><td>' + c.idUser + '</td>' +
+                        '<td><strong>' + esc(c.firstname) + ' ' + esc(c.lastname) + '</strong></td>' +
+                        '<td>' + esc(c.email || '—') + '</td>' +
+                        '<td><span class="badge badge-gold">' + esc(c.numPassport) + '</span></td>' +
+                        '<td class="actions">' +
+                            '<button class="btn btn-gold btn-icon" onclick="editClient(' + c.idUser + ')">✎</button>' +
+                            '<button class="btn btn-burgundy btn-icon" onclick="deleteClient(' + c.idUser + ')">✕</button>' +
+                        '</td></tr>'; 
+                });
+                document.getElementById('clientsTable').innerHTML = html + '</table>';
+            } catch (e) { 
+                document.getElementById('clientsTable').innerHTML = '<div class="alert alert-error"><span>!</span><span>Error.</span></div>'; 
+            }
+        }
+
+        async function addClient() {
+            var client = { 
+                firstname: document.getElementById('clientFirstname').value, 
+                lastname: document.getElementById('clientLastname').value, 
+                email: document.getElementById('clientEmail').value, 
+                phone: document.getElementById('clientPhone').value, 
+                address: document.getElementById('clientAddress').value, 
+                birthdate: document.getElementById('clientBirthdate').value, 
+                numPassport: document.getElementById('clientPassport').value 
+            };
+            try {
+                var response = await fetch(API_BASE + '/clients', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(client) });
+                if (response.ok) { 
+                    document.getElementById('clientResult').innerHTML = '<div class="alert alert-success"><span>✓</span><span>Client registered!</span></div>'; 
+                    loadClients(); 
+                }
+            } catch (e) { 
+                document.getElementById('clientResult').innerHTML = '<div class="alert alert-error"><span>!</span><span>Error.</span></div>'; 
+            }
+        }
+
+        function editClient(id) {
+            var c = dataStore.clients[id];
+            if (!c) return alert('Client not found');
+            var content = '<div class="form-group"><label>First Name</label><input type="text" id="editClientFirst" value="' + esc(c.firstname) + '"></div>' +
+                '<div class="form-group"><label>Last Name</label><input type="text" id="editClientLast" value="' + esc(c.lastname) + '"></div>' +
+                '<div class="form-group"><label>Email</label><input type="email" id="editClientEmail" value="' + esc(c.email || '') + '"></div>' +
+                '<div class="form-group"><label>Phone</label><input type="text" id="editClientPhone" value="' + esc(c.phone || '') + '"></div>' +
+                '<div class="form-group"><label>Address</label><input type="text" id="editClientAddr" value="' + esc(c.address || '') + '"></div>' +
+                '<div class="form-group"><label>Birthdate</label><input type="date" id="editClientBirth" value="' + esc(c.birthdate || '') + '"></div>' +
+                '<div class="form-group"><label>Passport</label><input type="text" id="editClientPass" value="' + esc(c.numPassport) + '"></div>' +
+                '<button class="btn btn-gold" onclick="updateClient(' + id + ')">Save Changes</button>';
+            openModal('Edit Client', content);
+        }
+
+        async function updateClient(id) {
+            var client = {
+                firstname: document.getElementById('editClientFirst').value,
+                lastname: document.getElementById('editClientLast').value,
+                email: document.getElementById('editClientEmail').value,
+                phone: document.getElementById('editClientPhone').value,
+                address: document.getElementById('editClientAddr').value,
+                birthdate: document.getElementById('editClientBirth').value,
+                numPassport: document.getElementById('editClientPass').value
+            };
+            try {
+                await fetch(API_BASE + '/clients/' + id, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(client) });
+                closeModal();
+                loadClients();
+            } catch (e) { alert('Error updating client'); }
+        }
+
+        async function deleteClient(id) { 
+            if (!confirm('Delete client #' + id + '?')) return; 
+            try { 
+                await fetch(API_BASE + '/clients/' + id, { method: 'DELETE' }); 
+                loadClients(); 
+            } catch (e) { alert('Error deleting client'); } 
+        }
+
+        // ==================== EMPLOYEES ====================
+        async function loadEmployees() {
+            try {
+                var response = await fetch(API_BASE + '/employees');
+                var employees = await response.json();
+                if (employees.length === 0) { 
+                    document.getElementById('employeesTable').innerHTML = '<div class="empty-state"><div class="empty-state-icon">💼</div><p class="empty-state-text">No staff.</p></div>'; 
+                    return; 
+                }
+                dataStore.employees = {};
+                var html = '<table><tr><th>ID</th><th>Emp #</th><th>Name</th><th>Position</th><th>Actions</th></tr>';
+                employees.forEach(function(e) { 
+                    dataStore.employees[e.idUser] = e;
+                    html += '<tr><td>' + e.idUser + '</td>' +
+                        '<td><span class="badge badge-burgundy">' + esc(e.numEmp) + '</span></td>' +
+                        '<td><strong>' + esc(e.firstname) + ' ' + esc(e.lastname) + '</strong></td>' +
+                        '<td>' + esc(e.profession || '—') + '</td>' +
+                        '<td class="actions">' +
+                            '<button class="btn btn-gold btn-icon" onclick="editEmployee(' + e.idUser + ')">✎</button>' +
+                            '<button class="btn btn-burgundy btn-icon" onclick="deleteEmployee(' + e.idUser + ')">✕</button>' +
+                        '</td></tr>'; 
+                });
+                document.getElementById('employeesTable').innerHTML = html + '</table>';
+            } catch (e) { 
+                document.getElementById('employeesTable').innerHTML = '<div class="alert alert-error"><span>!</span><span>Error.</span></div>'; 
+            }
+        }
+
+        async function addEmployee() {
+            var emp = { 
+                firstname: document.getElementById('empFirstname').value, 
+                lastname: document.getElementById('empLastname').value, 
+                email: document.getElementById('empEmail').value, 
+                phone: document.getElementById('empPhone').value, 
+                address: document.getElementById('empAddress').value, 
+                birthdate: document.getElementById('empBirthdate').value, 
+                numEmp: document.getElementById('empNumber').value, 
+                profession: document.getElementById('empProfession').value, 
+                title: document.getElementById('empTitle').value 
+            };
+            try {
+                var response = await fetch(API_BASE + '/employees', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(emp) });
+                if (response.ok) { 
+                    document.getElementById('employeeResult').innerHTML = '<div class="alert alert-success"><span>✓</span><span>Staff added!</span></div>'; 
+                    loadEmployees(); 
+                }
+            } catch (e) { 
+                document.getElementById('employeeResult').innerHTML = '<div class="alert alert-error"><span>!</span><span>Error.</span></div>'; 
+            }
+        }
+
+        function editEmployee(id) {
+            var e = dataStore.employees[id];
+            if (!e) return alert('Employee not found');
+            var content = '<div class="form-group"><label>First Name</label><input type="text" id="editEmpFirst" value="' + esc(e.firstname) + '"></div>' +
+                '<div class="form-group"><label>Last Name</label><input type="text" id="editEmpLast" value="' + esc(e.lastname) + '"></div>' +
+                '<div class="form-group"><label>Email</label><input type="email" id="editEmpEmail" value="' + esc(e.email || '') + '"></div>' +
+                '<div class="form-group"><label>Phone</label><input type="text" id="editEmpPhone" value="' + esc(e.phone || '') + '"></div>' +
+                '<div class="form-group"><label>Employee #</label><input type="text" id="editEmpNum" value="' + esc(e.numEmp) + '"></div>' +
+                '<div class="form-group"><label>Profession</label><input type="text" id="editEmpProf" value="' + esc(e.profession || '') + '"></div>' +
+                '<div class="form-group"><label>Title</label><input type="text" id="editEmpTitle" value="' + esc(e.title || '') + '"></div>' +
+                '<button class="btn btn-gold" onclick="updateEmployee(' + id + ')">Save Changes</button>';
+            openModal('Edit Employee', content);
+        }
+
+        async function updateEmployee(id) {
+            var emp = {
+                firstname: document.getElementById('editEmpFirst').value,
+                lastname: document.getElementById('editEmpLast').value,
+                email: document.getElementById('editEmpEmail').value,
+                phone: document.getElementById('editEmpPhone').value,
+                numEmp: document.getElementById('editEmpNum').value,
+                profession: document.getElementById('editEmpProf').value,
+                title: document.getElementById('editEmpTitle').value
+            };
+            try {
+                await fetch(API_BASE + '/employees/' + id, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(emp) });
+                closeModal();
+                loadEmployees();
+            } catch (e) { alert('Error updating employee'); }
+        }
+
+        async function deleteEmployee(id) { 
+            if (!confirm('Delete employee #' + id + '?')) return; 
+            try { 
+                await fetch(API_BASE + '/employees/' + id, { method: 'DELETE' }); 
+                loadEmployees(); 
+            } catch (e) { alert('Error deleting employee'); } 
+        }
+
+        // ==================== PLANES ====================
+        async function loadPlanes() {
+            try {
+                var response = await fetch(API_BASE + '/planes');
+                var planes = await response.json();
+                if (planes.length === 0) { 
+                    document.getElementById('planesTable').innerHTML = '<div class="empty-state"><div class="empty-state-icon">🛩</div><p class="empty-state-text">No aircraft.</p></div>'; 
+                    return; 
+                }
+                dataStore.planes = {};
+                var html = '<table><tr><th>ID</th><th>Manufacturer</th><th>Model</th><th>Year</th><th>Actions</th></tr>';
+                planes.forEach(function(p) { 
+                    dataStore.planes[p.idPlane] = p;
+                    html += '<tr><td>' + p.idPlane + '</td>' +
+                        '<td><strong>' + esc(p.brand) + '</strong></td>' +
+                        '<td>' + esc(p.model) + '</td>' +
+                        '<td><span class="badge badge-gold">' + p.manufacturingYear + '</span></td>' +
+                        '<td class="actions">' +
+                            '<button class="btn btn-gold btn-icon" onclick="editPlane(' + p.idPlane + ')">✎</button>' +
+                            '<button class="btn btn-burgundy btn-icon" onclick="deletePlane(' + p.idPlane + ')">✕</button>' +
+                        '</td></tr>'; 
+                });
+                document.getElementById('planesTable').innerHTML = html + '</table>';
+            } catch (e) { 
+                document.getElementById('planesTable').innerHTML = '<div class="alert alert-error"><span>!</span><span>Error.</span></div>'; 
+            }
+        }
+
+        async function addPlane() {
+            var plane = { 
+                brand: document.getElementById('planeBrand').value, 
+                model: document.getElementById('planeModel').value, 
+                manufacturingYear: parseInt(document.getElementById('planeYear').value) || 2020 
+            };
+            try {
+                var response = await fetch(API_BASE + '/planes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(plane) });
+                if (response.ok) { 
+                    document.getElementById('planeResult').innerHTML = '<div class="alert alert-success"><span>✓</span><span>Aircraft added!</span></div>'; 
+                    loadPlanes(); 
+                }
+            } catch (e) { 
+                document.getElementById('planeResult').innerHTML = '<div class="alert alert-error"><span>!</span><span>Error.</span></div>'; 
+            }
+        }
+
+        function editPlane(id) {
+            var p = dataStore.planes[id];
+            if (!p) return alert('Plane not found');
+            var content = '<div class="form-group"><label>Brand</label><input type="text" id="editPlaneBrand" value="' + esc(p.brand) + '"></div>' +
+                '<div class="form-group"><label>Model</label><input type="text" id="editPlaneModel" value="' + esc(p.model) + '"></div>' +
+                '<div class="form-group"><label>Year</label><input type="number" id="editPlaneYear" value="' + p.manufacturingYear + '"></div>' +
+                '<button class="btn btn-gold" onclick="updatePlane(' + id + ')">Save Changes</button>';
+            openModal('Edit Aircraft', content);
+        }
+
+        async function updatePlane(id) {
+            var plane = {
+                brand: document.getElementById('editPlaneBrand').value,
+                model: document.getElementById('editPlaneModel').value,
+                manufacturingYear: parseInt(document.getElementById('editPlaneYear').value) || 2020
+            };
+            try {
+                await fetch(API_BASE + '/planes/' + id, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(plane) });
+                closeModal();
+                loadPlanes();
+            } catch (e) { alert('Error updating plane'); }
+        }
+
+        async function deletePlane(id) { 
+            if (!confirm('Delete aircraft #' + id + '?')) return; 
+            try { 
+                await fetch(API_BASE + '/planes/' + id, { method: 'DELETE' }); 
+                loadPlanes(); 
+            } catch (e) { alert('Error deleting plane'); } 
+        }
+
+        // ==================== AIRPORTS ====================
+        async function loadAirports() {
+            try {
+                var response = await fetch(API_BASE + '/airports');
+                var airports = await response.json();
+                if (airports.length === 0) { 
+                    document.getElementById('airportsTable').innerHTML = '<div class="empty-state"><div class="empty-state-icon">🌍</div><p class="empty-state-text">No destinations.</p></div>'; 
+                    return; 
+                }
+                dataStore.airports = {};
+                var html = '<table><tr><th>ID</th><th>Airport</th><th>City</th><th>Country</th><th>Actions</th></tr>';
+                airports.forEach(function(a) { 
+                    dataStore.airports[a.idAirport] = a;
+                    html += '<tr><td>' + a.idAirport + '</td>' +
+                        '<td><strong>' + esc(a.nameAirport) + '</strong></td>' +
+                        '<td>' + esc(a.cityAirport) + '</td>' +
+                        '<td><span class="badge badge-burgundy">' + esc(a.countryAirport) + '</span></td>' +
+                        '<td class="actions">' +
+                            '<button class="btn btn-gold btn-icon" onclick="editAirport(' + a.idAirport + ')">✎</button>' +
+                            '<button class="btn btn-burgundy btn-icon" onclick="deleteAirport(' + a.idAirport + ')">✕</button>' +
+                        '</td></tr>'; 
+                });
+                document.getElementById('airportsTable').innerHTML = html + '</table>';
+            } catch (e) { 
+                document.getElementById('airportsTable').innerHTML = '<div class="alert alert-error"><span>!</span><span>Error.</span></div>'; 
+            }
+        }
+
+        async function addAirport() {
+            var airport = { 
+                nameAirport: document.getElementById('airportName').value, 
+                countryAirport: document.getElementById('airportCountry').value, 
+                cityAirport: document.getElementById('airportCity').value 
+            };
+            try {
+                var response = await fetch(API_BASE + '/airports', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(airport) });
+                if (response.ok) { 
+                    document.getElementById('airportResult').innerHTML = '<div class="alert alert-success"><span>✓</span><span>Destination added!</span></div>'; 
+                    loadAirports(); 
+                }
+            } catch (e) { 
+                document.getElementById('airportResult').innerHTML = '<div class="alert alert-error"><span>!</span><span>Error.</span></div>'; 
+            }
+        }
+
+        function editAirport(id) {
+            var a = dataStore.airports[id];
+            if (!a) return alert('Airport not found');
+            var content = '<div class="form-group"><label>Name</label><input type="text" id="editAirportName" value="' + esc(a.nameAirport) + '"></div>' +
+                '<div class="form-group"><label>Country</label><input type="text" id="editAirportCountry" value="' + esc(a.countryAirport) + '"></div>' +
+                '<div class="form-group"><label>City</label><input type="text" id="editAirportCity" value="' + esc(a.cityAirport) + '"></div>' +
+                '<button class="btn btn-gold" onclick="updateAirport(' + id + ')">Save Changes</button>';
+            openModal('Edit Airport', content);
+        }
+
+        async function updateAirport(id) {
+            var airport = {
+                nameAirport: document.getElementById('editAirportName').value,
+                countryAirport: document.getElementById('editAirportCountry').value,
+                cityAirport: document.getElementById('editAirportCity').value
+            };
+            try {
+                await fetch(API_BASE + '/airports/' + id, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(airport) });
+                closeModal();
+                loadAirports();
+            } catch (e) { alert('Error updating airport'); }
+        }
+
+        async function deleteAirport(id) { 
+            if (!confirm('Delete airport #' + id + '?')) return; 
+            try { 
+                await fetch(API_BASE + '/airports/' + id, { method: 'DELETE' }); 
+                loadAirports(); 
+            } catch (e) { alert('Error deleting airport'); } 
+        }
+
+        // ==================== REWARDS ====================
+        async function loadRewards() {
+            try {
+                var response = await fetch(API_BASE + '/miles-rewards');
+                var rewards = await response.json();
+                if (rewards.length === 0) { 
+                    document.getElementById('rewardsTable').innerHTML = '<div class="empty-state"><div class="empty-state-icon">⭐</div><p class="empty-state-text">No rewards yet.</p></div>'; 
+                    return; 
+                }
+                var html = '<table><tr><th>ID</th><th>Client</th><th>Flight</th><th>Date</th><th>Reward</th></tr>';
+                rewards.forEach(function(r) { 
+                    var hasDiscount = r.discountCode && r.discountCode !== 'null'; 
+                    html += '<tr><td>' + r.id + '</td>' +
+                        '<td>' + esc((r.client ? r.client.firstname : '') + ' ' + (r.client ? r.client.lastname : '')) + '</td>' +
+                        '<td>' + esc(r.flight ? r.flight.flightNumber : '—') + '</td>' +
+                        '<td>' + esc(r.date || '—') + '</td>' +
+                        '<td>' + (hasDiscount ? '<span class="badge badge-success">' + esc(r.discountCode) + '</span>' : '<span class="badge badge-gold">Pending</span>') + '</td></tr>'; 
+                });
+                document.getElementById('rewardsTable').innerHTML = html + '</table>';
+            } catch (e) { 
+                document.getElementById('rewardsTable').innerHTML = '<div class="alert alert-error"><span>!</span><span>Error.</span></div>'; 
+            }
+        }
+    </script>
+</body>
+</html>
