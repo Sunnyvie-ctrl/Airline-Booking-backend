@@ -1228,9 +1228,16 @@
         async function deleteFlight(num) { 
             if (!confirm('Delete flight ' + num + '?')) return; 
             try { 
-                await fetch(API_BASE + '/flights/' + num, { method: 'DELETE' }); 
-                loadFlights(); 
-            } catch (e) { alert('Error deleting flight'); } 
+                var response = await fetch(API_BASE + '/flights/' + num, { method: 'DELETE' });
+                if (response.ok) {
+                    loadFlights();
+                } else {
+                    var error = await response.json().catch(function() { return {}; });
+                    alert(error.message || 'Cannot delete flight');
+                }
+            } catch (e) { 
+                alert('Error deleting flight'); 
+            } 
         }
 
         // ==================== SEARCH ====================
@@ -1335,9 +1342,16 @@
         async function deleteBooking(id) { 
             if (!confirm('Cancel booking #' + id + '?')) return; 
             try { 
-                await fetch(API_BASE + '/bookings/' + id, { method: 'DELETE' }); 
-                loadBookings(); 
-            } catch (e) { alert('Error'); } 
+                var response = await fetch(API_BASE + '/bookings/' + id, { method: 'DELETE' });
+                if (response.ok) {
+                    loadBookings();
+                } else {
+                    var error = await response.json().catch(function() { return {}; });
+                    alert(error.message || 'Cannot delete booking');
+                }
+            } catch (e) { 
+                alert('Error deleting booking'); 
+            } 
         }
 
         // ==================== CLIENTS ====================
@@ -1423,9 +1437,16 @@
         async function deleteClient(id) { 
             if (!confirm('Delete client #' + id + '?')) return; 
             try { 
-                await fetch(API_BASE + '/clients/' + id, { method: 'DELETE' }); 
-                loadClients(); 
-            } catch (e) { alert('Error deleting client'); } 
+                var response = await fetch(API_BASE + '/clients/' + id, { method: 'DELETE' });
+                if (response.ok) {
+                    loadClients();
+                } else {
+                    var error = await response.json().catch(function() { return {}; });
+                    alert(error.message || 'Cannot delete client');
+                }
+            } catch (e) { 
+                alert('Error deleting client'); 
+            } 
         }
 
         // ==================== EMPLOYEES ====================
@@ -1513,9 +1534,16 @@
         async function deleteEmployee(id) { 
             if (!confirm('Delete employee #' + id + '?')) return; 
             try { 
-                await fetch(API_BASE + '/employees/' + id, { method: 'DELETE' }); 
-                loadEmployees(); 
-            } catch (e) { alert('Error deleting employee'); } 
+                var response = await fetch(API_BASE + '/employees/' + id, { method: 'DELETE' });
+                if (response.ok) {
+                    loadEmployees();
+                } else {
+                    var error = await response.json().catch(function() { return {}; });
+                    alert(error.message || 'Cannot delete employee');
+                }
+            } catch (e) { 
+                alert('Error deleting employee'); 
+            } 
         }
 
         // ==================== PLANES ====================
@@ -1589,9 +1617,16 @@
         async function deletePlane(id) { 
             if (!confirm('Delete aircraft #' + id + '?')) return; 
             try { 
-                await fetch(API_BASE + '/planes/' + id, { method: 'DELETE' }); 
-                loadPlanes(); 
-            } catch (e) { alert('Error deleting plane'); } 
+                var response = await fetch(API_BASE + '/planes/' + id, { method: 'DELETE' });
+                if (response.ok) {
+                    loadPlanes();
+                } else {
+                    var error = await response.json().catch(function() { return {}; });
+                    alert(error.message || 'Cannot delete plane');
+                }
+            } catch (e) { 
+                alert('Error deleting plane'); 
+            } 
         }
 
         // ==================== AIRPORTS ====================
@@ -1665,9 +1700,16 @@
         async function deleteAirport(id) { 
             if (!confirm('Delete airport #' + id + '?')) return; 
             try { 
-                await fetch(API_BASE + '/airports/' + id, { method: 'DELETE' }); 
-                loadAirports(); 
-            } catch (e) { alert('Error deleting airport'); } 
+                var response = await fetch(API_BASE + '/airports/' + id, { method: 'DELETE' });
+                if (response.ok) {
+                    loadAirports();
+                } else {
+                    var error = await response.json().catch(function() { return {}; });
+                    alert(error.message || 'Cannot delete airport');
+                }
+            } catch (e) { 
+                alert('Error deleting airport'); 
+            } 
         }
 
         // ==================== REWARDS ====================

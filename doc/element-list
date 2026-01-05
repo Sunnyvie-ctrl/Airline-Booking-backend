@@ -1,0 +1,8 @@
+com.KORNN.airline_backend
+com.KORNN.airline_backend.config
+com.KORNN.airline_backend.controller
+com.KORNN.airline_backend.dto
+com.KORNN.airline_backend.exception
+com.KORNN.airline_backend.model
+com.KORNN.airline_backend.repository
+com.KORNN.airline_backend.service

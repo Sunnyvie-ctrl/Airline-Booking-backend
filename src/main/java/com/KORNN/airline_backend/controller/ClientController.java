@@ -1,6 +1,7 @@
 package com.KORNN.airline_backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.KORNN.airline_backend.model.Client;
@@ -54,14 +55,17 @@ public class ClientController {
         }
     }
 
-    // DELETE - DELETE /api/v1/clients/{id}
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
-        try {
-            clientService.deleteClient(id);
-            return ResponseEntity.noContent().build();
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+    
+
+
+@DeleteMapping("/{id}")
+public ResponseEntity<?> deleteClient(@PathVariable Long id) {
+    try {
+        clientService.deleteClient(id);
+        return ResponseEntity.noContent().build();
+    } catch (Exception e) {
+    	return ResponseEntity.status(HttpStatus.CONFLICT)
+    		    .body(java.util.Map.of("message", "Cannot delete client: they have existing bookings. Delete their bookings first."));
     }
+}
 }
