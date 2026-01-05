@@ -7,7 +7,6 @@ import java.time.LocalDate;
 @Table(name = "employees")
 public class Employee extends User {
 
-    @Id
     @Column(name = "num_emp")
     private String numEmp;
 
@@ -16,10 +15,6 @@ public class Employee extends User {
 
     @Column(name = "title")
     private String title;
-
-    @OneToOne
-    @JoinColumn(name = "id_user", nullable = false)
-    private User user;
 
     // Default constructor (required by JPA)
     public Employee() {
