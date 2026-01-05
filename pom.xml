@@ -8,10 +8,11 @@
 		<version>4.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-    <groupId>com.KORNN</groupId>
-    <artifactId>airline_backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+	<groupId>fr.epita</groupId>
+	<artifactId>timeoutairline</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>timeoutairline</name>
+	<description>AirLine Management Application</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -78,6 +79,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.epita</groupId>
+			<artifactId>schoolmanagement</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
