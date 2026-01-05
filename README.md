@@ -69,7 +69,7 @@ This configuration is defined in the `config` package.
 
 ```bash
 git clone https://github.com/your-username/Airline-Booking-backend.git
-cd timeoutairline
+cd Airline-Booking-backend
 ```
 
 ##Create the MySQL database
