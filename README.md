@@ -1,10 +1,10 @@
 # Timeout Airline Backend
 
 ## Overview
-This project is a backend web application for **KORNN Airline**, built with **Java Spring Boot**.  
-It allows customers to book flights online, manages planes, airports, flights, users, clients, and employees, and keeps track of miles rewards and discounts.
+Timeout Airline Backend is a backend web application developed for **Timeout Airline**.  
+It provides a RESTful API that allows customers to search for flights, book flights online, and allows administrators to manage users, clients, employees, planes, airports, flights, bookings, and miles rewards.
 
-The backend exposes a **REST API** and uses a relational database (PostgreSQL) for data storage.  
+The application is built with **Java and Spring Boot**, uses **MySQL** as the relational database, and follows a layered architecture (Controller, Service, Repository).  
 
 ---
 
@@ -21,11 +21,12 @@ The backend exposes a **REST API** and uses a relational database (PostgreSQL) f
 ---
 
 ## Technologies Used
-- **Backend**: Java 17, Spring Boot  
-- **Build Tool**: Maven  
-- **Database**: PostgreSQL (configurable in `application.properties`)  
-- **API Testing**: Postman (Swagger not used in this project)  
-- **Source Control**: GitHub  
+- **Backend**: Java 21, Spring Boot
+- **Build Tool**: Maven
+- **Database**: MySQL
+- **ORM**: Spring Data JPA / Hibernate
+- **API Testing**: Postman
+- **Source Control**: GitHub
 
 ---
 
@@ -34,11 +35,13 @@ The backend exposes a **REST API** and uses a relational database (PostgreSQL) f
 airline_backend/
 │
 ├─ src/main/java/com/KORNN/airline_backend
+│ ├─ config/ # Application configuration
 │ ├─ controller/ # REST Controllers
 │ ├─ dto/ # Data Transfer Objects
 │ ├─ model/ # Entities (User, Client, Flight, etc.)
 │ ├─ repository/ # Spring Data JPA Repositories
-│ └─ service/ # Business logic
+│ ├─ service/ # Business logic
+│ └─ exception/ # Custom exceptions & global exception handling
 │
 ├─ src/main/resources/
 │ └─ application.properties
@@ -47,20 +50,46 @@ airline_backend/
 ```
 ---
 
+## Configuration
+
+### CORS Configuration
+The application includes a global CORS configuration allowing frontend applications to access the API:
+
+- Allowed paths: `/api/**`
+- Allowed methods: `GET`, `POST`, `PUT`, `DELETE`
+- Allowed origins: all (`*`)
+
+This configuration is defined in the `config` package.
+
+---
+
 ## Installation & Running
 
-1. Clone the repository:
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/Java-Project.git
-cd Java-Project
+git clone https://github.com/your-username/timeoutairline.git
+cd timeoutairline
 ```
+
+##Create the MySQL database
+
+Ensure MySQL is running, then execute:
+```sql
+CREATE DATABASE timeout_airline;
+```
+
 Configure your database in src/main/resources/application.properties:
 
-      spring.datasource.url=jdbc:mysql://localhost:3306/airline_db
+      spring.application.name=airline_backend
+      server.port=8085
+      
+      spring.datasource.url=jdbc:mysql://localhost:3306/timeout_airline
       spring.datasource.username=root
       spring.datasource.password=yourpassword
+      
       spring.jpa.hibernate.ddl-auto=update
+      spring.jpa.show-sql=true
 
 Build and run the project with Maven:
 
@@ -68,41 +97,46 @@ Build and run the project with Maven:
 mvn clean install
 mvn spring-boot:run
 ```
-The API runs on http://localhost:8080/ by default.
+
+The API will be available at:
+
+      http://localhost:8085
 
 API Endpoints (Examples)
 
 Users:
 ```
-GET /users → List all users
+GET /api/v1/users
 
-GET /users/{id} → Get user by ID
+GET /api/v1/users/{id}
 
-POST /users → Create a new user
+POST /api/v1/users
 
-PUT /users/{id} → Update user
+PUT /api/v1/users/{id}
 
-DELETE /users/{id} → Delete user
+DELETE /api/v1/users/{id}
 ```
 
 Flights:
 ```
-GET /flights → List all flights
+GET /api/v1/flights
 
-GET /flights/search?departureCity=...&arrivalCity=...&date=... → Search flights
+GET /api/v1/flights/search?departureCity=...&arrivalCity=...&date=...
 
-POST /flights → Create new flight
+POST /api/v1/flights
 
-PUT /flights/{id} → Update flight
+PUT /api/v1/flights/{id}
 
-DELETE /flights/{id} → Delete flight"
+DELETE /api/v1/flights/{id}
 ```
 
 Booking:
 ```
-POST /bookings → Book a flight
+POST /api/v1/bookings
 
-GET /bookings/{clientPassport} → List bookings for a client"
+POST /api/v1/bookings/book
+
+GET /api/v1/bookings/{id}
 ```
 
 Example JSON Requests
@@ -110,8 +144,8 @@ Create User:
 
 ```json
 {
-  "firstName": "John",
-  "lastName": "Doe",
+  "firstname": "John",
+  "lastname": "Doe",
   "address": "123 Main Street",
   "email": "john@example.com",
   "phone": "123456789",
@@ -122,9 +156,16 @@ Create User:
 Book a Flight:
 ```json
 {
-  "clientPassport": "A12345678",
+  "firstname": "John",
+  "lastname": "Doe",
+  "passportNumber": "A12345678",
+  "birthdate": "1990-01-01",
+  "departureCity": "Paris",
+  "arrivalCity": "London",
+  "departureHour": "10:00",
+  "arrivalHour": "11:30",
   "flightNumber": "FL123",
-  "typeOfSeat": "Business"
+  "typeOfSeat": "BUSINESS"
 }
 ```
 
