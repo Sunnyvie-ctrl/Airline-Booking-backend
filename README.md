@@ -68,7 +68,7 @@ This configuration is defined in the `config` package.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/timeoutairline.git
+git clone https://github.com/your-username/Airline-Booking-backend.git
 cd timeoutairline
 ```
 
